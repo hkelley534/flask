@@ -4,9 +4,9 @@ from flask import Flask, render_template, request
 import datetime
 
 app = Flask(__name__)
-global studentOrganisationDetails
+global studentOrganisationDetails 
 # Assign default 5 values to studentOrganisationDetails for Application  3.
-
+studentOrganisationDetails = {}
 
 @app.get('/')
 def index():
@@ -52,8 +52,11 @@ def displayStudentForm():
 def displayRegistrationPage():
     # Get student name and organisation from form.
     studentName = request.form['name']
+    studentOrg = request.form['org']
 
     # Append this value to studentOrganisationDetails
-    studentOrganisationDetails.append(studentName)
+
+    studentOrganisationDetails[studentName] = studentOrg
+
     # Display studentDetails.html with all students and organisations
     return render_template('StudentDetails.html', studentOrganisationDetails=studentOrganisationDetails)
