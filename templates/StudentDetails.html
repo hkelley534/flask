@@ -4,12 +4,25 @@
 
   {{ super() }}
 
-  <div class="col-md-4 bg-orange text-center rounded-4">
-    <h1>Student Details</h1>
-    <table>
+  <div class="col-md-4 bg-orange d-flex flex-column justify-content-center align-items-center rounded-4">
+    <h1 class="p-3">Student Details</h1>
+
+    <table class="table table-hover">
+      <tr>
+        <th>Student</th>
+        <th>Organisation</th>
+      </tr>
       {%for key,value in studentOrganisationDetails.items()%}
-  
+        <tr>
+          <td>{{key}}</td>
+          <td>{{value}}</td>
+        </tr>
       {%endfor%}
     </table>
+
+    <a class="btn btn-dark rounded-5 text-light-orange float-left m-5" href="/addStudentOrganisation">
+      <h1 class="p-1 text-sm">Register Again!</h1>
+    </a>
+    
   </div>
 {% endblock %}
